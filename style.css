@@ -1,15 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem;
+  color:white;
+}
+
 div.wrapper {
   width: 450px;
   height: 660px;
   border: 1px solid;
   display: flex;
   flex-direction: row;
-  border: 1px solid gray;
   flex-wrap: wrap;
+  box-sizing: border-box;
 }
 
-div.wrapper div {
+div.wrapper div:not(:first-child) {
   height: 110px;
+  border: 0 1px 0 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.wrapper div:first-child {
+  height: 110px;
+  border: 0 1px 0 1px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 20px;
+  font-size: 3rem;
+  background-color: #333333;
 }
 
 div.answer {
@@ -18,13 +41,21 @@ div.answer {
 
 div.ac {
   flex-basis: 75%;
+  background-color: #555555;
 }
 
 div.number {
-  background-color: darkgray;
+  background-color:#666666;
   flex-basis: 25%;
+}
+
+div.0 {
+  flex-basis: 50%;
 }
 
 div.operator {
   flex-grow: 1;
+  background-color: #FF9E0B;
 }
+
+div.
