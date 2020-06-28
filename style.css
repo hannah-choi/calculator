@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
 body {
   font-family: "Montserrat", sans-serif;
@@ -16,9 +16,11 @@ div.wrapper {
   box-sizing: border-box;
 }
 
-div.wrapper div:not(:first-child) {
+
+div.wrapper div{
   height: 110px;
   border: 0 1px 0 1px;
+  border-color: #222222;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,8 +51,9 @@ div.number {
   flex-basis: 25%;
 }
 
-div.0 {
+div.number:nth-child(16) {
   flex-basis: 50%;
+  background-color:#666666;
 }
 
 div.operator {
