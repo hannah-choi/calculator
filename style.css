@@ -1,0 +1,12 @@
+div.wrapper {
+  width: 450px;
+  height: 660px;
+  border: 1px solid;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid gray;
+}
+
+div.wrapper.div {
+  height: 110px;
+}
