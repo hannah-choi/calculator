@@ -5,8 +5,26 @@ div.wrapper {
   display: flex;
   flex-direction: row;
   border: 1px solid gray;
+  flex-wrap: wrap;
 }
 
-div.wrapper.div {
+div.wrapper div {
   height: 110px;
+}
+
+div.answer {
+  flex-basis: 100%;
+}
+
+div.ac {
+  flex-basis: 75%;
+}
+
+div.number {
+  background-color: darkgray;
+  flex-basis: 25%;
+}
+
+div.operator {
+  flex-grow: 1;
 }
