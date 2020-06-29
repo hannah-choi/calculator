@@ -19,10 +19,10 @@ numbers.forEach(function (number) {
 
 for (let i = 0; i < numbers.length; i++) {
   numbers[i].addEventListener("click", function () {
-    if (display.innerText == "0") {
-      display.innerText = numbers[i].innerText;
+    if (display.value == "0") {
+      display.value = numbers[i].innerText;
     } else {
-      display.innerText += numbers[i].innerText;
+      display.value += numbers[i].innerText;
     }
 
     numbers[i].classList.add("number-active");
@@ -47,7 +47,7 @@ for (let i = 0; i < operators.length; i++) {
 }
 
 allClear.addEventListener("click", function () {
-  display.innerText = "";
+  display.value = "";
 
   allClear.classList.add("number-active");
 

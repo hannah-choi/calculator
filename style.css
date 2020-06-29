@@ -4,6 +4,25 @@
   box-sizing: border-box;
 }
 
+button,
+input {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  overflow: hidden;
+  text-transform: none;
+  color: inherit;
+}
+
+button:focus,
+input:focus {
+  outline: 0;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   font-size: 2rem;
@@ -21,7 +40,7 @@ div.wrapper {
   border-top: 1px solid #222222;
 }
 
-div.wrapper div {
+div.wrapper button {
   height: 110px;
   border: 0 1px 0 1px;
   border-color: #222222;
@@ -33,7 +52,7 @@ div.wrapper div {
   cursor: pointer;
 }
 
-div.wrapper div:first-child {
+div.wrapper button:first-child {
   height: 110px;
   border: 0 1px 0 1px;
   display: flex;
@@ -44,36 +63,47 @@ div.wrapper div:first-child {
   background-color: #333333;
 }
 
-div.answer {
+input.answer {
   flex-basis: 100%;
+  height: 110px;
+  border: 0 1px 0 1px;
+  border-color: #222222;
+  padding: 20px;
+  text-align: right;
+  border-left: 1px solid #222222;
+  border-bottom: 1px solid #222222;
+  cursor: pointer;
+  background-color: #333333;
+  font-size: 3rem;
 }
 
-div.ac {
+button.ac {
   flex-basis: 75%;
   background-color: #555555;
 }
 
-div.number {
+button.number {
   background-color: #666666;
   flex-basis: 25%;
 }
 
-div.number-active {
+button.number-active {
   background-color: white;
   color: #666666;
+  border: none;
 }
 
-div.number:nth-child(16) {
+button.number:nth-child(16) {
   flex-basis: 50%;
 }
 
-div.operator {
+button.operator {
   flex-grow: 1;
   background-color: #ff9e0b;
   font-size: 3rem;
 }
 
-div.operator-active {
+button.operator-active {
   background-color: white;
   color: #ff9e0b;
 }
