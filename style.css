@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
+
+*{
+  box-sizing: border-box;
+}
+
+
 body {
   font-family: "Montserrat", sans-serif;
   font-size: 2rem;
@@ -13,7 +19,8 @@ div.wrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  box-sizing: border-box;
+  border-right: 1px solid #222222;
+  border-top: 1px solid #222222;
 }
 
 
@@ -24,6 +31,9 @@ div.wrapper div{
   display: flex;
   align-items: center;
   justify-content: center;
+  border-left: 1px solid #222222;
+  border-bottom: 1px solid #222222;
+  cursor: pointer;
 }
 
 div.wrapper div:first-child {
@@ -59,6 +69,7 @@ div.number:nth-child(16) {
 div.operator {
   flex-grow: 1;
   background-color: #FF9E0B;
+  font-size: 3rem;
 }
 
 div.
