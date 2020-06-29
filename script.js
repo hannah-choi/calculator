@@ -19,19 +19,22 @@ numbers.forEach(function (number) {
 
 for (let i = 0; i < numbers.length; i++) {
   numbers[i].addEventListener("click", function () {
-    if (display.value == "0") {
-      display.value = numbers[i].innerText;
-    } else {
-      display.value += numbers[i].innerText;
-    }
-
-    numbers[i].classList.add("number-active");
-
-    setTimeout(function () {
-      if (numbers[i].classList.contains("number-active")) {
-        numbers[i].classList.remove("number-active");
+    if (display.value.length < 13) {
+      if (display.value == "0") {
+        display.value = numbers[i].innerText;
+      } else {
+        display.value += numbers[i].innerText;
       }
-    }, 200);
+      numbers[i].classList.add("number-active");
+
+      setTimeout(function () {
+        if (numbers[i].classList.contains("number-active")) {
+          numbers[i].classList.remove("number-active");
+        }
+      }, 200);
+    } else {
+      alert("Number limit exceeded");
+    }
   });
 }
 
