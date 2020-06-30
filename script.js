@@ -11,6 +11,16 @@ let h2 = document.querySelector("h2");
 h2.innerText = calculation;
 //------------------------------------------------
 
+function buttonEffect(element, className) {
+  element.classList.add(className);
+
+  setTimeout(function () {
+    if (element.classList.contains(className)) {
+      element.classList.remove(className);
+    }
+  }, 200);
+}
+
 // 숫자 버튼
 
 for (let i = 0; i < numbers.length; i++) {
@@ -29,13 +39,8 @@ for (let i = 0; i < numbers.length; i++) {
           calculation = display.value;
         }
       }
-      numbers[i].classList.add("number-active");
 
-      setTimeout(function () {
-        if (numbers[i].classList.contains("number-active")) {
-          numbers[i].classList.remove("number-active");
-        }
-      }, 200);
+      buttonEffect(numbers[i], "number-active");
     } else {
       display.value += "";
     }
@@ -63,12 +68,14 @@ for (let i = 0; i < operators.length; i++) {
       }
     }
 
-    operators[i].classList.add("operator-active");
+    buttonEffect(operators[i], "operator-active");
+
+    /*operators[i].classList.add("operator-active");
     setTimeout(function () {
       if (operators[i].classList.contains("operator-active")) {
         operators[i].classList.remove("operator-active");
       }
-    }, 200);
+    }, 200);*/
   });
 }
 
@@ -80,13 +87,7 @@ allClear.addEventListener("click", function () {
   display.value = "";
   calculation = display.value;
 
-  allClear.classList.add("number-active");
-
-  setTimeout(function () {
-    if (allClear.classList.contains("number-active")) {
-      allClear.classList.remove("number-active");
-    }
-  }, 200);
+  buttonEffect(allClear, "number-active");
 });
 
 //------------------------------------------------
@@ -98,10 +99,7 @@ equal.addEventListener("click", function () {
     display.value = eval(calculation);
   }
 
-  equal.classList.add("operator-active");
-  setTimeout(function () {
-    if (equal.classList.contains("operator-active")) {
-      equal.classList.remove("operator-active");
-    }
-  }, 200);
+  buttonEffect(equal, "operator-active");
 });
+
+//-----------------------------
