@@ -6,6 +6,8 @@ const dot = document.querySelector(".dot");
 const equal = document.querySelector(".equal");
 let calculation;
 
+let operatorOnOff = false;
+
 let h2 = document.querySelector("h2");
 
 h2.innerText = calculation;
@@ -25,25 +27,24 @@ function buttonEffect(element, className) {
 
 for (let i = 0; i < numbers.length; i++) {
   numbers[i].addEventListener("click", function () {
-    if (display.value.length < 13) {
-      if (display.value == "0" && numbers[i] != dot) {
-        display.value = numbers[i].innerText;
-        calculation = display.value;
-      } else {
-        if (numbers[i] == dot && display.value.includes(".")) {
-          return;
-        } else if (numbers[i] == dot && display.value == "") {
-          return;
-        } else {
-          display.value += numbers[i].innerText;
-          calculation = display.value;
-        }
-      }
-
-      buttonEffect(numbers[i], "number-active");
-    } else {
-      display.value += "";
+    if (display.value.length > 13) {
+      return;
     }
+    if (display.value == "0" && numbers[i] != dot) {
+      display.value = numbers[i].innerText;
+      calculation = display.value;
+    } else {
+      if (numbers[i] == dot && display.value.includes(".")) {
+        return;
+      } else if (numbers[i] == dot && display.value == "") {
+        return;
+      } else {
+        display.value += numbers[i].innerText;
+        calculation = display.value;
+      }
+    }
+    operatorOnOff = false;
+    buttonEffect(numbers[i], "number-active");
   });
 }
 
@@ -53,22 +54,16 @@ for (let i = 0; i < numbers.length; i++) {
 
 for (let i = 0; i < operators.length; i++) {
   operators[i].addEventListener("click", function () {
-    if (display.value.length < 13) {
+    if (display.value.length < 13 && operatorOnOff == false) {
       if (display.value.length >= 1) {
         display.value += operators[i].innerText;
-        if (operators[i].innerText == "×") {
-          calculation += "*";
-        } else if (operators[i].innerText == "÷") {
-          calculation += "/";
-        } else {
-          calculation += operators[i];
-        }
       } else if ((display.value.length = 1)) {
         display.value += "";
       }
     }
 
     buttonEffect(operators[i], "operator-active");
+    operatorOnOff = true;
 
     /*operators[i].classList.add("operator-active");
     setTimeout(function () {
@@ -103,3 +98,6 @@ equal.addEventListener("click", function () {
 });
 
 //-----------------------------
+
+// 연산자가 클릭되면 flag는 on,
+// 숫자가 클릭되면 flag는 off
