@@ -3,24 +3,12 @@ const display = document.querySelector(".answer");
 const allClear = document.querySelector(".ac");
 const operators = document.querySelectorAll(".operator");
 const dot = document.querySelector(".dot");
+const equal = document.querySelector(".equal");
 let calculation;
 
-//------------------------------------------------
+let h2 = document.querySelector("h2");
 
-/*
-numbers.forEach(function (number) {
-  number.addEventListener("click", function () {
-    if (display.innerText == "0") {
-      display.innerText = number.innerText;
-    } else {
-      display.innerText += number.innerText;
-    }
-
-    number.classList.toggle("number-active");
-  });
-});
-*/
-
+h2.innerText = calculation;
 //------------------------------------------------
 
 // 숫자 버튼
@@ -30,6 +18,7 @@ for (let i = 0; i < numbers.length; i++) {
     if (display.value.length < 13) {
       if (display.value == "0" && numbers[i] != dot) {
         display.value = numbers[i].innerText;
+        calculation = display.value;
       } else {
         if (numbers[i] == dot && display.value.includes(".")) {
           return;
@@ -37,6 +26,7 @@ for (let i = 0; i < numbers.length; i++) {
           return;
         } else {
           display.value += numbers[i].innerText;
+          calculation = display.value;
         }
       }
       numbers[i].classList.add("number-active");
@@ -61,6 +51,13 @@ for (let i = 0; i < operators.length; i++) {
     if (display.value.length < 13) {
       if (display.value.length >= 1) {
         display.value += operators[i].innerText;
+        if (operators[i].innerText == "×") {
+          calculation += "*";
+        } else if (operators[i].innerText == "÷") {
+          calculation += "/";
+        } else {
+          calculation += operators[i];
+        }
       } else if ((display.value.length = 1)) {
         display.value += "";
       }
@@ -81,6 +78,7 @@ for (let i = 0; i < operators.length; i++) {
 
 allClear.addEventListener("click", function () {
   display.value = "";
+  calculation = display.value;
 
   allClear.classList.add("number-active");
 
@@ -92,3 +90,18 @@ allClear.addEventListener("click", function () {
 });
 
 //------------------------------------------------
+
+equal.addEventListener("click", function () {
+  if (display.value == "") {
+    return;
+  } else {
+    display.value = eval(calculation);
+  }
+
+  equal.classList.add("operator-active");
+  setTimeout(function () {
+    if (equal.classList.contains("operator-active")) {
+      equal.classList.remove("operator-active");
+    }
+  }, 200);
+});

@@ -82,7 +82,8 @@ button.ac {
   background-color: #555555;
 }
 
-button.number {
+button.number,
+button.equal {
   background-color: #666666;
   flex-basis: 25%;
 }
@@ -97,7 +98,8 @@ button.number:nth-child(16) {
   flex-basis: 50%;
 }
 
-button.operator {
+button.operator,
+button.equal {
   flex-grow: 1;
   background-color: #ff9e0b;
   font-size: 3rem;
@@ -106,4 +108,9 @@ button.operator {
 button.operator-active {
   background-color: white;
   color: #ff9e0b;
+}
+
+h2 {
+  font-size: 1rem;
+  color: #222222;
 }
