@@ -1,7 +1,11 @@
-let numbers = document.querySelectorAll(".number");
-let display = document.querySelector(".answer");
-let allClear = document.querySelector(".ac");
-let operators = document.querySelectorAll(".operator");
+const numbers = document.querySelectorAll(".number");
+const display = document.querySelector(".answer");
+const allClear = document.querySelector(".ac");
+const operators = document.querySelectorAll(".operator");
+const dot = document.querySelector(".dot");
+let calculation;
+
+//------------------------------------------------
 
 /*
 numbers.forEach(function (number) {
@@ -17,13 +21,23 @@ numbers.forEach(function (number) {
 });
 */
 
+//------------------------------------------------
+
+// 숫자 버튼
+
 for (let i = 0; i < numbers.length; i++) {
   numbers[i].addEventListener("click", function () {
     if (display.value.length < 13) {
-      if (display.value == "0") {
+      if (display.value == "0" && numbers[i] != dot) {
         display.value = numbers[i].innerText;
       } else {
-        display.value += numbers[i].innerText;
+        if (numbers[i] == dot && display.value.includes(".")) {
+          return;
+        } else if (numbers[i] == dot && display.value == "") {
+          return;
+        } else {
+          display.value += numbers[i].innerText;
+        }
       }
       numbers[i].classList.add("number-active");
 
@@ -33,13 +47,25 @@ for (let i = 0; i < numbers.length; i++) {
         }
       }, 200);
     } else {
-      alert("Number limit exceeded");
+      display.value += "";
     }
   });
 }
 
+//------------------------------------------------
+
+// 연산자 버튼
+
 for (let i = 0; i < operators.length; i++) {
   operators[i].addEventListener("click", function () {
+    if (display.value.length < 13) {
+      if (display.value.length >= 1) {
+        display.value += operators[i].innerText;
+      } else if ((display.value.length = 1)) {
+        display.value += "";
+      }
+    }
+
     operators[i].classList.add("operator-active");
     setTimeout(function () {
       if (operators[i].classList.contains("operator-active")) {
@@ -48,6 +74,10 @@ for (let i = 0; i < operators.length; i++) {
     }, 200);
   });
 }
+
+//------------------------------------------------
+
+// ac 버튼
 
 allClear.addEventListener("click", function () {
   display.value = "";
@@ -60,3 +90,5 @@ allClear.addEventListener("click", function () {
     }
   }, 200);
 });
+
+//------------------------------------------------
