@@ -7,6 +7,9 @@ const equal = document.querySelector(".equal");
 let calculation;
 
 let operatorOnOff = false;
+let operatorEnd = false;
+let dotOnOff = false;
+let calculationDone = false;
 
 let h2 = document.querySelector("h2");
 
@@ -25,13 +28,17 @@ function buttonEffect(element, className) {
 
 // 숫자 버튼
 
-function numberClick() {
+function numberClick(number) {
   if (display.value.length > 13) {
     return;
   }
   if (display.value == "0" && number != dot) {
     display.value = number.innerText;
     calculation = display.value;
+  } else if (calculationDone == true) {
+    display.value = number.innerText;
+    calculation = display.value;
+    calculationDone = false;
   } else {
     if (numbers == dot && display.value.includes(".")) {
       return;
@@ -43,78 +50,35 @@ function numberClick() {
     }
   }
   operatorOnOff = false;
+  dotOnOff = false;
+  operatorEnd = false;
   buttonEffect(number, "number-active");
 }
-
-// function numberClick() {
-//   for (let i = 0; i < numbers.length; i++) {
-//     numbers[i].addEventListener("click", (e) => {
-//       if (display.value.length > 13) {
-//         return;
-//       }
-//       if (display.value == "0" && e.target != dot) {
-//         display.value = e.target.innerText;
-//         calculation = display.value;
-//       } else {
-//         if (e.target == dot && display.value.includes(".")) {
-//           return;
-//         } else if (e.target == dot && display.value == "") {
-//           return;
-//         } else {
-//           display.value += e.target.innerText;
-//           calculation = display.value;
-//         }
-//       }
-//       operatorOnOff = false;
-//       buttonEffect(e.target, "number-active");
-//     });
-//   }
-// }
 
 //------------------------------------------------
 
 // 연산자 버튼
 
-function operatorClick(e) {
-  if (display.value.length < 13 && operatorOnOff == false) {
-    if (display.value.length >= 1) {
-      display.value += e.target.innerText;
-    } else if ((display.value.length = 1)) {
-      display.value += "";
-    }
+function operatorClick(operator) {
+  if (display.value.length > 13) {
+    return;
+  }
+  if (operatorOnOff == true) {
+    return;
   }
 
-  buttonEffect(e.target, "operator-active");
+  if (display.value.length >= 1) {
+    display.value += operator.innerText;
+  } else if ((display.value.length = 1)) {
+    return;
+  }
+
+  buttonEffect(operator, "operator-active");
   operatorOnOff = true;
+  operatorEnd = true;
 }
 
-// function operatorClick() {
-//   for (let i = 0; i < operators.length; i++) {
-//     operators[i].addEventListener("click", (e) => {
-//       if (display.value.length < 13 && operatorOnOff == false) {
-//         if (display.value.length >= 1) {
-//           display.value += e.target.innerText;
-//         } else if ((display.value.length = 1)) {
-//           display.value += "";
-//         }
-//       }
-
-//       buttonEffect(e.target, "operator-active");
-//       operatorOnOff = true;
-//     });
-//   }
-// }
-
 //------------------------------------------------
-
-// ac 버튼
-
-// allClear.addEventListener("click", function () {
-//   display.value = "";
-//   calculation = display.value;
-
-//   buttonEffect(allClear, "number-active");
-// });
 
 function acClick() {
   display.value = "";
@@ -129,11 +93,14 @@ function eqClick() {
   equal.addEventListener("click", function () {
     if (display.value == "") {
       return;
+    } else if (operatorEnd == true) {
+      return;
     } else {
       display.value = eval(calculation);
     }
 
     buttonEffect(equal, "operator-active");
+    calculationDone = true;
   });
 }
 
@@ -147,16 +114,19 @@ function eqClick() {
 document.querySelector(".wrapper").addEventListener("click", (e) => {
   switch (e.target.dataset.key) {
     case "number":
-      numbers.forEach(numberClick);
+      numberClick(e.target);
       break;
     case "ac":
-      acClick();
+      acClick(e.target);
       break;
     case "operator":
-      operatorClick();
+      operatorClick(e.target);
       break;
     case "equal":
-      eqClick();
+      eqClick(e.target);
+      break;
+    case "dot":
+      dotClick(e.target);
       break;
   }
 });
