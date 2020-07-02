@@ -87,6 +87,20 @@ function acClick() {
   buttonEffect(allClear, "number-active");
 }
 
+function dotClick(dot) {
+  if (!display.value) {
+    return;
+  } else if (dotOnOff == true) {
+    return;
+  } else {
+    display.value += dot.innerText;
+    dotOnOff = true;
+    calculation = display.value;
+  }
+
+  buttonEffect(dot, "number-active");
+}
+
 //------------------------------------------------
 
 function eqClick() {
