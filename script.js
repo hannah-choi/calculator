@@ -35,7 +35,7 @@ function numberClick(number) {
   if (display.value == "0" && number != dot) {
     display.value = number.innerText;
     calculation = display.value;
-  } else if (calculationDone == true) {
+  } else if (calculationDone && !operatorOnOff) {
     display.value = number.innerText;
     calculation = display.value;
     calculationDone = false;
@@ -49,6 +49,7 @@ function numberClick(number) {
       calculation = display.value;
     }
   }
+
   operatorOnOff = false;
   dotOnOff = false;
   operatorEnd = false;
@@ -63,16 +64,18 @@ function operatorClick(operator) {
   if (display.value.length > 13) {
     return;
   }
-  if (operatorOnOff == true) {
+  if (operatorOnOff) {
     return;
   }
 
   if (display.value.length >= 1) {
     display.value += operator.innerText;
-  } else if ((display.value.length = 1)) {
+  } else if (display.value.length == 1) {
     return;
   }
 
+  dotOnOff = false;
+  calculationDone = false;
   buttonEffect(operator, "operator-active");
   operatorOnOff = true;
   operatorEnd = true;
@@ -90,7 +93,7 @@ function acClick() {
 function dotClick(dot) {
   if (!display.value) {
     return;
-  } else if (dotOnOff == true) {
+  } else if (dotOnOff || operatorEnd) {
     return;
   } else {
     display.value += dot.innerText;
@@ -104,18 +107,14 @@ function dotClick(dot) {
 //------------------------------------------------
 
 function eqClick() {
-  equal.addEventListener("click", function () {
-    if (display.value == "") {
-      return;
-    } else if (operatorEnd == true) {
-      return;
-    } else {
-      display.value = eval(calculation);
-    }
+  if (display.value == "" || operatorEnd) {
+    return;
+  } else {
+    display.value = eval(calculation);
+  }
 
-    buttonEffect(equal, "operator-active");
-    calculationDone = true;
-  });
+  buttonEffect(equal, "operator-active");
+  calculationDone = true;
 }
 
 // 연산자가 클릭되면 flag는 on,
