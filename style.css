@@ -1,116 +1,117 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 button,
 input {
-  margin: 0;
-  border: 0;
-  padding: 0;
-  border-radius: 0;
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit;
-  overflow: hidden;
-  text-transform: none;
-  color: inherit;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    border-radius: 0;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    overflow: hidden;
+    text-transform: none;
+    color: inherit;
 }
 
 button:focus,
 input:focus {
-  outline: 0;
+    outline: 0;
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
-  font-size: 2rem;
-  color: white;
+    font-family: "Montserrat", sans-serif;
+    font-size: 2rem;
+    color: white;
 }
 
 div.wrapper {
-  width: 450px;
-  height: 660px;
-  border: 1px solid;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  border-right: 1px solid #222222;
-  border-top: 1px solid #222222;
+    width: 450px;
+    height: 660px;
+    border: 1px solid;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-right: 1px solid #222222;
+    border-top: 1px solid #222222;
+    margin: 100px auto;
 }
 
 div.wrapper button {
-  height: 110px;
-  border: 0 1px 0 1px;
-  border-color: #222222;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-left: 1px solid #222222;
-  border-bottom: 1px solid #222222;
-  cursor: pointer;
+    height: 110px;
+    border: 0 1px 0 1px;
+    border-color: #222222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid #222222;
+    border-bottom: 1px solid #222222;
+    cursor: pointer;
 }
 
 div.wrapper button:first-child {
-  height: 110px;
-  border: 0 1px 0 1px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 20px;
-  font-size: 3rem;
-  background-color: #333333;
+    height: 110px;
+    border: 0 1px 0 1px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 20px;
+    font-size: 3rem;
+    background-color: #333333;
 }
 
 input.answer {
-  flex-basis: 100%;
-  height: 110px;
-  border: 0 1px 0 1px;
-  border-color: #222222;
-  padding: 20px;
-  text-align: right;
-  border-left: 1px solid #222222;
-  border-bottom: 1px solid #222222;
-  cursor: pointer;
-  background-color: #333333;
-  font-size: 3rem;
+    flex-basis: 100%;
+    height: 110px;
+    border: 0 1px 0 1px;
+    border-color: #222222;
+    padding: 20px;
+    text-align: right;
+    border-left: 1px solid #222222;
+    border-bottom: 1px solid #222222;
+    cursor: pointer;
+    background-color: #333333;
+    font-size: 3rem;
 }
 
 button.ac {
-  flex-basis: 75%;
-  background-color: #555555;
+    flex-basis: 75%;
+    background-color: #555555;
 }
 
 button.number,
 button.equal {
-  background-color: #666666;
-  flex-basis: 25%;
+    background-color: #666666;
+    flex-basis: 25%;
 }
 
 button.number-active {
-  background-color: white;
-  color: #666666;
-  border: none;
+    background-color: white;
+    color: #666666;
+    border: none;
 }
 
 button.number:nth-child(16) {
-  flex-basis: 50%;
+    flex-basis: 50%;
 }
 
 button.operator,
 button.equal {
-  flex-grow: 1;
-  background-color: #ff9e0b;
-  font-size: 3rem;
+    flex-grow: 1;
+    background-color: #ff9e0b;
+    font-size: 3rem;
 }
 
 button.operator-active {
-  background-color: white;
-  color: #ff9e0b;
+    background-color: white;
+    color: #ff9e0b;
 }
 
 h2 {
-  font-size: 1rem;
-  color: #222222;
+    font-size: 1rem;
+    color: #222222;
 }

@@ -130,7 +130,7 @@ function eqClick() {
     return;
   } else {
     //그렇지않으면 calculation변수에 담긴 연산을 eval()로 계산한다
-    display.value = eval(calculation);
+    display.value = eval(calculation.replace("÷", "/").replace("×", "*"));
   }
 
   buttonEffect(equal, "operator-active");
